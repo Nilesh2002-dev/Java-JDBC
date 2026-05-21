@@ -10,7 +10,7 @@ public class JDBCDemo {
 
         try(Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);){
             System.out.println("Connected to database successfully");
-            //insertStudent(conn , "nilesh" , "nile@2002" );
+            insertStudent(conn , "nilesh" , "nile@2002" );
             updateStudent(conn , 3 , "vinay" , "Vinay@gamil.com");
             selectStudents(conn);
             deleteStudent(conn , 4 );
@@ -54,9 +54,13 @@ public class JDBCDemo {
 
 
     private static void updateStudent(Connection conn,int id ,String name,String email  ){
-        String sql = "UPDATE student SET name = '"+name +"' , email = '" + email + "' where ID = " + id;
-        try (Statement stmt = conn.createStatement()){
-            int rows = stmt.executeUpdate(sql);
+        //  String sql = "UPDATE student SET name = '"+name +"' , email = '" + email + "' where ID = " + id;
+        String sql = "UPDATE student SET name = ? , email = ? where ID = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setString(1,name);
+            pstmt.setString(2,email);
+            pstmt.setInt(3,id);
+            int rows = pstmt.executeUpdate();
             System.out.println("UPDATED: "+ rows +" rows into student database successfully");
         } catch (SQLException e) {
             e.printStackTrace();
