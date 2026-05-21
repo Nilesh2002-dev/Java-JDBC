@@ -35,7 +35,7 @@ public class JDBCDemo {
     }
 
     private static void selectStudents (Connection conn){
-        String sql = "SELECT  FROM student";
+        String sql = "SELECT * FROM student";
         try (Statement stmt = conn.createStatement()){
            ResultSet resultSet = stmt.executeQuery(sql);
             System.out.println("All students List :");
