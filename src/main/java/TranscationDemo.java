@@ -12,6 +12,9 @@ public class TranscationDemo {
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);) {
             System.out.println("Connected to database successfully");
+
+            // Order , OrderedItems
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
