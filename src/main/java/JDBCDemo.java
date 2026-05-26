@@ -14,7 +14,7 @@ public class JDBCDemo {
             updateStudent(conn , 3 , "vinay" , "Vinay@gamil.com");
             selectStudents(conn);
             //deleteStudent(conn , 4 );
-            //deleteStudent(conn , 5 );
+            deleteStudent(conn , 5 );
             deleteStudent(conn , 6 );
             deleteStudent(conn , 7 );
         } catch (SQLException e) {
